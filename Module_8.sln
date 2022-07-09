@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module_8_Total_2", "Module_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module_8_Total_3", "Module_8_Total_3\Module_8_Total_3.csproj", "{190E6ED3-2838-4BE0-9CE1-7D38E1ABBA52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module_8_Total_4", "Module_8_Total_4\Module_8_Total_4.csproj", "{28BCA39C-8437-4AC3-94FF-A4AF1130FFC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinalTask", "Module_8_Total_4\FinalTask.csproj", "{28BCA39C-8437-4AC3-94FF-A4AF1130FFC2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Module_8_2", "Module_8_2\Module_8_2.csproj", "{33351318-B513-49B0-AD90-D2F872759B2C}"
 EndProject

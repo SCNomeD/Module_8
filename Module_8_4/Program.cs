@@ -125,6 +125,8 @@ namespace Module_8_4
         public static void Main()
         {
             ReadValues();
+            WriteValues();
+            ReadValues();
         }
         public static void ReadValues()
         {
