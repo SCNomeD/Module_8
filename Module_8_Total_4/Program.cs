@@ -8,7 +8,7 @@ namespace Module_8_Total_4
     {
         public static void Main(string[] args)
         {
-            const string Path = @"C:\Users\vlad-\Downloads\Students.dat";
+            const string Path = @"C:\Users\vladi\Downloads\Students.dat";
             BinaryFormatter formatter = new BinaryFormatter();
             Student[] students = null;
             using (var fs = new FileStream(Path, FileMode.Open))

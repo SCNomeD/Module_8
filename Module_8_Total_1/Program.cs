@@ -16,13 +16,13 @@ namespace Module_8_Total_1
                 Console.Write("Введите полный путь до папки: ");
                 Path = Console.ReadLine();
                 if (Directory.Exists(Path)) break;
-                else Console.WriteLine("Ошибка: данная папка не найдена. Повторите попытку.");
+                else Console.WriteLine("Ошибка: Проверьте путь, папка не найдена!");
             }
             DirectoryInfo directory = new DirectoryInfo(Path);
 
-            DirsDelete(directory);
+            DirDelete(directory);
 
-            static void DirsDelete(DirectoryInfo directory)
+            static void DirDelete(DirectoryInfo directory)
             {
                 FilesDelete(directory);
                 foreach (DirectoryInfo dir in directory.GetDirectories())
@@ -30,14 +30,14 @@ namespace Module_8_Total_1
                     if (dir.GetFiles().Length > 0)
                         FilesDelete(dir);
                     if (dir.GetDirectories().Length > 0)
-                        DirsDelete(dir);
+                        DirDelete(dir);
                     if (dir.GetFiles().Length == 0 && dir.GetDirectories().Length == 0
                         && DateTime.Now - dir.LastAccessTime > TimeSpan.FromMinutes(time))
                     {
                         try
                         {
                             dir.Delete();
-                            Console.WriteLine($"Была удалена папка {dir.FullName}");
+                            Console.WriteLine($"Папка {dir.FullName} была удалена");
                         }
                         catch
                         {
@@ -52,7 +52,7 @@ namespace Module_8_Total_1
                     if (DateTime.Now - file.LastAccessTime > TimeSpan.FromMinutes(time))
                     {
                         file.Delete();
-                        Console.WriteLine($"Был удалён файл {file.FullName}");
+                        Console.WriteLine($"Файл {file.FullName} был удален");
                     }
             }
         }

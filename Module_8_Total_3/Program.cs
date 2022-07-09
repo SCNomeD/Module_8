@@ -9,15 +9,15 @@ namespace Module_8_Total_3
         {
             const double time = 0.1;
             string Path;
-            long Initial = 0, Cleared = 0;
+            long Cleared = 0;
             while (true)
             {
                 Console.Write("Введите полный путь до папки.\nВвод: ");
                 Path = Console.ReadLine();
                 if (Directory.Exists(Path)) break;
-                else Console.WriteLine("Ошибка: данная папка не найдена. Повторите попытку.");
+                else Console.WriteLine("Ошибка: Проверьте путь, папка не найдена!");
             }
-            Initial = MyTask.GetDirSize(Path);
+            long Initial = MyTask.GetDirSize(Path);
             Console.WriteLine($"\nИсходный вес папки: {Initial} байт");
 
             var directory = new DirectoryInfo(Path);

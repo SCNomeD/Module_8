@@ -118,51 +118,49 @@ namespace Module_8_4
     //}
     #endregion
     #region 8.4.2
-    //class Program
-    //{
-    //    // сохраняем путь к файлу (допустим, вы его скачали на рабочий стол)
-    //    const string filePath = @"C:\Users\vladi\OneDrive\Рабочий стол\BinaryFile.bin";
-    //    public static void Main()
-    //    {
-    //        ReadValues();
-    //        WriteValues();
-    //        ReadValues();
-    //    }
-    //    public static void ReadValues()
-    //    {
-    //        // при запуске проверим, что файл существует
-    //        if (File.Exists(filePath))
-    //        {
-    //            // строковая переменная, в которую будем считывать данные
-    //            string stringValue;
+    class Program
+    {
+        // сохраняем путь к файлу (допустим, вы его скачали на рабочий стол)
+        const string filePath = @"C:\Users\vladi\OneDrive\Рабочий стол\BinaryFile.bin";
+        public static void Main()
+        {
+            ReadValues();
+        }
+        public static void ReadValues()
+        {
+            // при запуске проверим, что файл существует
+            if (File.Exists(filePath))
+            {
+                // строковая переменная, в которую будем считывать данные
+                string stringValue;
 
-    //            // считываем, после использования высвобождаем задействованный ресурс BinaryReader
-    //            using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
-    //            {
-    //                stringValue = reader.ReadString();
-    //            }
+                // считываем, после использования высвобождаем задействованный ресурс BinaryReader
+                using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
+                {
+                    stringValue = reader.ReadString();
+                }
 
-    //            // Вывод
-    //            Console.WriteLine("Из файла считано:");
-    //            Console.WriteLine(stringValue);
-    //        }
-    //    }
-    //    public static void WriteValues()
-    //    {
-    //        // сохраняем путь к файлу (допустим, вы его скачали на рабочий стол)
+                // Вывод
+                Console.WriteLine("Из файла считано:");
+                Console.WriteLine(stringValue);
+            }
+        }
+        public static void WriteValues()
+        {
+            // сохраняем путь к файлу (допустим, вы его скачали на рабочий стол)
 
-    //        // при запуске проверим, что файл существует
-    //        if (File.Exists(filePath))
-    //        {
-    //            // Создаем объект BinaryWriter и указываем, куда будет направлен поток данных
-    //            using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
-    //            {
-    //                // записываем данные
-    //                writer.Write($"Файл изменен {DateTime.Now} на компьютере c ОС {Environment.OSVersion}");
-    //            }
-    //        }
-    //    }
-    //}
+            // при запуске проверим, что файл существует
+            if (File.Exists(filePath))
+            {
+                // Создаем объект BinaryWriter и указываем, куда будет направлен поток данных
+                using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
+                {
+                    // записываем данные
+                    writer.Write($"Файл изменен {DateTime.Now} на компьютере c ОС {Environment.OSVersion}");
+                }
+            }
+        }
+    }
     #endregion
     #region 8.4.2 (dop Сериализация)
     //// Описываем наш класс и помечаем его атрибутом для последующей сериализации   
@@ -205,45 +203,45 @@ namespace Module_8_4
     //}
     #endregion
     #region 8.4.3
-    // Описываем наш класс и помечаем его атрибутом для последующей сериализации   
-    [Serializable]
-    class Contact
-    {
-        public string Name { get; set; }
-        public long PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public Contact(string name, long phoneNumber, string email)
-        {
-            Name = name;
-            PhoneNumber = phoneNumber;
-            Email = email;
-        }
-    }
+    //// Описываем наш класс и помечаем его атрибутом для последующей сериализации   
+    //[Serializable]
+    //class Contact
+    //{
+    //    public string Name { get; set; }
+    //    public long PhoneNumber { get; set; }
+    //    public string Email { get; set; }
+    //    public Contact(string name, long phoneNumber, string email)
+    //    {
+    //        Name = name;
+    //        PhoneNumber = phoneNumber;
+    //        Email = email;
+    //    }
+    //}
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // объект для сериализации
-            var contact = new Contact("Владимир", 89645045452, "vladiiimir1991@gmail.com");
-            Console.WriteLine("Объект создан");
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        // объект для сериализации
+    //        var contact = new Contact("Владимир", 89645045452, "vladiiimir1991@gmail.com");
+    //        Console.WriteLine("Объект создан");
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            // получаем поток, куда будем записывать сериализованный объект
-            using (var fs = new FileStream("myContacts.dat", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, contact);
-                Console.WriteLine("Объект сериализован");
-            }
-            // десериализация
-            using (var fs = new FileStream("myContacts.dat", FileMode.OpenOrCreate))
-            {
-                var newContact = (Contact)formatter.Deserialize(fs);
-                Console.WriteLine("Объект десериализован");
-                Console.WriteLine($"Имя: {newContact.Name} --- Тел. номер: {newContact.PhoneNumber} --- Email: {newContact.Email}");
-            }
-            Console.ReadLine();
-        }
-    }
+    //        BinaryFormatter formatter = new BinaryFormatter();
+    //        // получаем поток, куда будем записывать сериализованный объект
+    //        using (var fs = new FileStream("myContacts.dat", FileMode.OpenOrCreate))
+    //        {
+    //            formatter.Serialize(fs, contact);
+    //            Console.WriteLine("Объект сериализован");
+    //        }
+    //        // десериализация
+    //        using (var fs = new FileStream("myContacts.dat", FileMode.OpenOrCreate))
+    //        {
+    //            var newContact = (Contact)formatter.Deserialize(fs);
+    //            Console.WriteLine("Объект десериализован");
+    //            Console.WriteLine($"Имя: {newContact.Name} --- Тел. номер: {newContact.PhoneNumber} --- Email: {newContact.Email}");
+    //        }
+    //        Console.ReadLine();
+    //    }
+    //}
     #endregion
 }

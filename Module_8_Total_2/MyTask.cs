@@ -19,7 +19,7 @@ public static class MyTask
 
         long size = 0;
 
-        try // И без нижних try работает нормально, но пусть лучше будут, а то мало ли xD
+        try
         {
             foreach (var file in directory.GetFiles())
                 size += file.Length;
